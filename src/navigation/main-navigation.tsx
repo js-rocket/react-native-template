@@ -2,8 +2,8 @@ import React from 'react'
 import { ColorValue, Text, TouchableOpacity, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 import { NavigationContainer } from '@react-navigation/native'
-// import { createStackNavigator } from '@react-navigation/stack'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createStackNavigator } from '@react-navigation/stack'
+// import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import * as Icons from '../components/icons'
@@ -14,7 +14,7 @@ import routes from './routes'
 
 
 const Tab = createBottomTabNavigator()
-const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
 
 const MainNavigation = () => {
   const theme = useTheme();
