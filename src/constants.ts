@@ -7,4 +7,4 @@ export enum ApiStatus {
   UNKNOWN,
 }
 
-export const API_BASE_URL = 'https://tulz.herokuapp.com' // no trailing slash
+export const API_BASE_URL = 'https://js-rocket.github.io/mock-api' // no trailing slash

@@ -9,7 +9,7 @@ import * as Icons from '../../components/icons'
 import * as Svgimages from '../../components/svgimages'
 import routes from '../../navigation/routes'
 
-import { apiPost } from '../../utils/apiclient'
+import { apiGet } from '../../utils/apiclient'
 import { ApiStatus } from '../../constants'
 
 const PageWrapper = styled.View(({ theme }) => ({
@@ -39,7 +39,7 @@ export const LoginPage = ({
     console.log(`Login: ${email} ${pass}`)
 
     const data = { email, pass }
-    const response = await apiPost('/echo', data)
+    const response = await apiGet('/login', data)
 
     if (response.status === ApiStatus.OK) return navigation.navigate(routes[routes.TabsHome] as never)
 
