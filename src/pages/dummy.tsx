@@ -36,7 +36,7 @@ export const DummyPage = ({
   return (
     <PageContainer>
       <Text>{route.name} </Text>
-      <View style={{paddingHorizontal:60}}>
+      <View style={{ paddingHorizontal: 60 }}>
         <Button
           title={`Go ${nextRouteName}`}
           onPress={() => navigation.navigate(nextRouteName as never)}

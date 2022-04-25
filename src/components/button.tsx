@@ -4,7 +4,7 @@ import React from 'react'
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-const ButtonView = styled.View(({theme}) => ({
+const ButtonView = styled.View(({ theme }) => ({
   // flex:1,
   minWidth: '100%',
   minHeight: 32,

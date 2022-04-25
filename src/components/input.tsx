@@ -15,5 +15,5 @@ const StyleTextInput = styled.TextInput(() => ({
 }))
 
 export const Input = (props: any) => (
-  <StyleTextInput underlineColorAndroid='white' {...props} />
+  <StyleTextInput underlineColorAndroid="white" {...props} />
 )

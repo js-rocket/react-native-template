@@ -12,12 +12,11 @@ import { IntroPage } from '../pages/intro'
 import { LoginPage } from '../pages/login'
 import routes from './routes'
 
-
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 const MainNavigation = () => {
-  const theme = useTheme();
+  const theme = useTheme()
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -107,7 +106,9 @@ const TabBarButton = ({
       onPress={onPress}>
       <View style={{ alignItems: 'center' }}>
         {icon}
-        <Text style={{ color: textColor ? textColor : theme.colors.default }}>{title}</Text>
+        <Text style={{ color: textColor ? textColor : theme.colors.default }}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   )
@@ -117,8 +118,8 @@ const TabBarButton = ({
 const MyTabBar = ({ navigation }: { navigation: any }) => {
   const theme = useTheme()
 
-  const buttonColor: ColorValue = theme.colors.secondary;
-  const iconColor: ColorValue = theme.colors.default;
+  const buttonColor: ColorValue = theme.colors.secondary
+  const iconColor: ColorValue = theme.colors.default
 
   return (
     <View
@@ -129,19 +130,19 @@ const MyTabBar = ({ navigation }: { navigation: any }) => {
         justifyContent: 'space-between',
       }}>
       <TabBarButton
-        title='Home'
+        title="Home"
         icon={<Icons.Home fill={iconColor} />}
         color={buttonColor}
         onPress={() => navigation.navigate(routes[routes.Home])}
       />
       <TabBarButton
-        title='Gallery'
+        title="Gallery"
         icon={<Icons.Search fill={iconColor} />}
         color={buttonColor}
         onPress={() => navigation.navigate(routes[routes.Gallery])}
       />
       <TabBarButton
-        title='Settings'
+        title="Settings"
         icon={<Icons.Settings fill={iconColor} />}
         color={buttonColor}
         onPress={() => navigation.navigate(routes[routes.Settings])}

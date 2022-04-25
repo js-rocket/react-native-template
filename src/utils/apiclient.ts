@@ -1,21 +1,27 @@
-import { ApiStatus, API_BASE_URL } from "../constants";
-import { ApiResponse } from "../types";
+import { ApiStatus, API_BASE_URL } from '../constants'
+import { ApiResponse } from '../types'
 import { jsonPost, jsonGet } from '../services/apiclient'
 
-
-export const apiPost = async (url: string, data: object): Promise<ApiResponse> => {
-
+export const apiPost = async (
+  url: string,
+  data: object,
+): Promise<ApiResponse> => {
   // TODO: Pass API token through header if user is authenticated
   const headers = {
     'Content-Type': 'application/json',
-    'xdata-authorization': 'Bearer XXXXXXXXXXXXXXXXXXXXXXXXXX'
+    'xdata-authorization': 'Bearer XXXXXXXXXXXXXXXXXXXXXXXXXX',
   }
 
-  const apiResponse = await jsonPost(`${API_BASE_URL}${url}`, { headers, body: JSON.stringify(data) });
+  const apiResponse = await jsonPost(`${API_BASE_URL}${url}`, {
+    headers,
+    body: JSON.stringify(data),
+  })
 
-  console.log(JSON.stringify(apiResponse, null, 2));
+  console.log(JSON.stringify(apiResponse, null, 2))
 
-  if (apiResponse.status === ApiStatus.OK) return apiResponse;
+  if (apiResponse.status === ApiStatus.OK) {
+    return apiResponse
+  }
 
   // handle other situations
   if (apiResponse.status === ApiStatus.NO_AUTH) {
@@ -23,32 +29,34 @@ export const apiPost = async (url: string, data: object): Promise<ApiResponse> =
   }
 
   // For erros, maybe just flash a message on the screen
-  if (apiResponse.status === ApiStatus.NO_NETWORK) return {
-    status: apiResponse.status,
-    result: 'No network connectivity'
+  if (apiResponse.status === ApiStatus.NO_NETWORK) {
+    return {
+      status: apiResponse.status,
+      result: 'No network connectivity',
+    }
   }
 
   // all other situations, show generic message
   return {
     status: apiResponse.status,
-    result: 'Could not connect to server'
+    result: 'Could not connect to server',
   }
 }
 
-
-export const apiGet = async (url: string, data: object): Promise<ApiResponse> => {
-
+export const apiGet = async (url: string): Promise<ApiResponse> => {
   // TODO: Pass API token through header if user is authenticated
   const headers = {
     'Content-Type': 'application/json',
-    'xdata-authorization': 'Bearer XXXXXXXXXXXXXXXXXXXXXXXXXX'
+    'xdata-authorization': 'Bearer XXXXXXXXXXXXXXXXXXXXXXXXXX',
   }
 
-  const apiResponse = await jsonGet(`${API_BASE_URL}${url}`, { headers });
+  const apiResponse = await jsonGet(`${API_BASE_URL}${url}`, { headers })
 
-  console.log(JSON.stringify(apiResponse, null, 2));
+  console.log(JSON.stringify(apiResponse, null, 2))
 
-  if (apiResponse.status === ApiStatus.OK) return apiResponse;
+  if (apiResponse.status === ApiStatus.OK) {
+    return apiResponse
+  }
 
   // handle other situations
   if (apiResponse.status === ApiStatus.NO_AUTH) {
@@ -56,14 +64,16 @@ export const apiGet = async (url: string, data: object): Promise<ApiResponse> =>
   }
 
   // For erros, maybe just flash a message on the screen
-  if (apiResponse.status === ApiStatus.NO_NETWORK) return {
-    status: apiResponse.status,
-    result: 'No network connectivity'
+  if (apiResponse.status === ApiStatus.NO_NETWORK) {
+    return {
+      status: apiResponse.status,
+      result: 'No network connectivity',
+    }
   }
 
   // all other situations, show generic message
   return {
     status: apiResponse.status,
-    result: 'Could not connect to server'
+    result: 'Could not connect to server',
   }
 }

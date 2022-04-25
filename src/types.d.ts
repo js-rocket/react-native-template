@@ -1,6 +1,6 @@
 import { ApiStatus } from './constants'
 
 export interface ApiResponse {
-  status: ApiStatus,
+  status: ApiStatus
   result: Object | string | null
 }

@@ -23,7 +23,7 @@ const PageWrapper = styled.View(({ theme }) => ({
 const LoginButtonText = (
   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     <Text style={{ color: 'white', marginRight: 10 }}>Login</Text>
-    <Icons.Login fill='white' />
+    <Icons.Login fill="white" />
   </View>
 )
 
@@ -41,7 +41,9 @@ export const LoginPage = ({
     const data = { email, pass }
     const response = await apiGet('/login', data)
 
-    if (response.status === ApiStatus.OK) return navigation.navigate(routes[routes.TabsHome] as never)
+    if (response.status === ApiStatus.OK) {
+      return navigation.navigate(routes[routes.TabsHome] as never)
+    }
 
     // TODO if something wrong flash error message
     // console.log(response.result);
@@ -50,17 +52,17 @@ export const LoginPage = ({
   return (
     <PageWrapper>
       {/* <Icons.Face fill='black' viewBox='0 0 24 24' width={64} height={64} /> */}
-      <Svgimages.Tux fill='black' width={80} height={80} />
+      <Svgimages.Tux fill="black" width={80} height={80} />
       <View style={{ height: 20 }} />
       <Input
-        placeholder='Email'
+        placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        keyboardType='email-address'
+        keyboardType="email-address"
       />
       <View style={{ height: 20 }} />
       <Input
-        placeholder='Password'
+        placeholder="Password"
         value={pass}
         onChangeText={setPass}
         secureTextEntry={true}

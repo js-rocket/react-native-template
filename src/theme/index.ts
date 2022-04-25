@@ -8,7 +8,7 @@ const commonProperties = {
     medium: 12,
     large: 24,
     extralarge: 32,
-  }
+  },
 }
 
 export const lightTheme = {
@@ -18,9 +18,9 @@ export const lightTheme = {
     tertiary: '#508aa8',
     accent: '#ba1200',
     default: 'white',
-    inverse: 'black'
+    inverse: 'black',
   },
-  ...commonProperties
+  ...commonProperties,
 }
 
 export const darkTheme = {
@@ -30,7 +30,7 @@ export const darkTheme = {
     tertiary: '#508aa8',
     accent: '#ba1200',
     default: 'black',
-    inverse: 'white'
+    inverse: 'white',
   },
-  ...commonProperties
+  ...commonProperties,
 }
