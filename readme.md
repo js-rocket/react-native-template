@@ -9,7 +9,7 @@ The main purpose of this repository is to demonstrate the folder structure as ag
 
 * Use of navigation/router
 * Use of calling API
-* Use of saving key/values to local storage - TODO
+* Use of saving key/values to local storage
 * Use of themes - TODO
 * Use of internationalization - TODO
 

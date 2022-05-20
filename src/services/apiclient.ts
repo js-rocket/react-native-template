@@ -9,24 +9,27 @@ const defaultFetchOptions = {
   // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
   // credentials: 'same-origin', // include, *same-origin, omit
   headers: {
-    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Content-type': 'application/json',
     // 'Content-Type': 'application/x-www-form-urlencoded',
   },
   // redirect: 'follow', // manual, *follow, error
-  //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-  timeout: 8 * 1000, // 8 second timeout
+  // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  timeout: 7 * 1000, // 7 second timeout
 }
 
-export const jsonFetch = async (
+const jsonFetch = async (
   url: string,
-  options?: object,
+  options: RequestInit,
 ): Promise<ApiResponse> => {
   const fetchOptions = { ...defaultFetchOptions, ...options }
 
-  console.log(`${options.method}: ${url}`)
+  console.log(`${new Date()} ${options.method}: ${url}`)
 
   try {
     const response = await fetch(url, { ...fetchOptions })
+
+    // console.log(`${new Date()} >>> response`, response)
 
     if (response.status === 200) {
       const json = await response.json()
@@ -39,9 +42,11 @@ export const jsonFetch = async (
 
     return { status: ApiStatus.UNKNOWN, result: response }
   } catch (error) {
-    console.error(error)
+    console.log('>>> error:', error)
     return { status: ApiStatus.UNKNOWN, result: `unknown error: ${error}` }
   }
+
+  // console.log(`${new Date()} >>> done`)
 }
 
 export const jsonPost = async (

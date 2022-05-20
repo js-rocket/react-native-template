@@ -1,6 +1,6 @@
 // standard app button
 
-import React from 'react'
+import React, { ReactChild } from 'react'
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -22,7 +22,7 @@ export const Button = ({
   title,
   onPress,
 }: {
-  title: string | JSX.Element
+  title: string | ReactChild
   onPress: (event: GestureResponderEvent) => void
 }) => (
   <TouchableOpacity onPress={onPress}>

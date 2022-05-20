@@ -4,19 +4,29 @@ import { useTheme } from 'styled-components/native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs'
 
 import * as Icons from '../components/icons'
-import { DummyPage } from '../pages/dummy'
-import { IntroPage } from '../pages/intro'
-import { LoginPage } from '../pages/login'
 import routes from './routes'
+import {
+  DummyPage,
+  GalleryPage,
+  HomePage,
+  IntroPage,
+  LoginPage,
+  SettingsPage,
+} from '../pages'
+import { UserAvatar } from '../components/elements'
 
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 const MainNavigation = () => {
   const theme = useTheme()
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -53,26 +63,41 @@ const MainNavigation = () => {
 }
 
 const TabbedRoutes = () => {
+  const theme = useTheme()
+
+  const tabHeaderStyle: BottomTabNavigationOptions = {
+    headerTitleAlign: 'center',
+    headerTitleStyle: { color: theme.colors.default },
+    headerStyle: { backgroundColor: theme.colors.secondary },
+  }
+
   return (
     <Tab.Navigator
       initialRouteName={routes[routes.Home]}
       tabBar={props => <MyTabBar {...props} />}
-      screenOptions={{ headerShown: false }}>
+      screenOptions={{ headerShown: true }}>
       <Tab.Group>
         <Tab.Screen
           name={routes[routes.Home]}
-          component={DummyPage}
+          component={HomePage}
           initialParams={{ nextScreen: routes.Login }}
+          options={{
+            ...tabHeaderStyle,
+            title: 'Home',
+            headerRight: () => <UserAvatar />,
+          }}
         />
         <Tab.Screen
           name={routes[routes.Gallery]}
-          component={DummyPage}
+          component={GalleryPage}
           initialParams={{ nextScreen: routes.Help }}
+          options={{ ...tabHeaderStyle, title: 'Gallery' }}
         />
         <Tab.Screen
           name={routes[routes.Settings]}
-          component={DummyPage}
+          component={SettingsPage}
           initialParams={{ nextScreen: routes.Intro }}
+          options={{ ...tabHeaderStyle, title: 'Settings' }}
         />
       </Tab.Group>
     </Tab.Navigator>
@@ -95,8 +120,10 @@ const TabBarButton = ({
   onPress: () => void
 }) => {
   const theme = useTheme()
+  console.log('theme.isDark', theme.isDark)
   return (
     <TouchableOpacity
+      activeOpacity={theme.isDark ? 0.9 : 0.5}
       style={{
         backgroundColor: color ? color : theme.colors.secondary,
         flex: 1,

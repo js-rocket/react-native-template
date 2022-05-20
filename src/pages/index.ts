@@ -1,0 +1,7 @@
+export * from './gallery'
+export * from './splash'
+export * from './dummy'
+export * from './login'
+export * from './intro'
+export * from './home'
+export * from './settings'

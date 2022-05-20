@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components/native'
 import { NavigationProp } from '@react-navigation/native'
 
-import { Button } from '../../components/button'
+import { Button } from '../../components/elements'
 import routes from '../../navigation/routes'
 
 const PageWrapper = styled.View(() => ({
@@ -63,7 +63,7 @@ export const IntroPage = ({
               This is a small react native template
               {'\n\n'}
               It uses uses the bare minimum number of external packages to
-              create a application
+              create an application
               {'\n\n'}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

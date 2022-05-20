@@ -17,7 +17,7 @@ export const SplashPage = () => {
   const [splashQuote, setSplashQuote] = useState('Patience is a virtue ...')
 
   useEffect(() => {
-    setTimeout(() => setSplashQuote('But not for this app'), 2000)
+    setTimeout(() => setSplashQuote('But not for this app'), 1000)
   }, [])
 
   return (
